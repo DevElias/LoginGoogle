@@ -8,7 +8,6 @@
         {
             $this->client = $googleClient;
             
-            //Estes dados irao retornar para o diretorio localhost/login/...
             if($this->client)
             {
                 $this->client->setClientID('195002437870-vr27esfdr89bvull4v78eifo0aktot41.apps.googleusercontent.com');
@@ -35,11 +34,12 @@
             {
                 $this->client->authenticate($_GET['code']);
                 $this->setToken($this->client->getAccessToken());
+				$this->setUser($this->getPayload());
                 
                 $payload = $this->getPayload();
                 
-               echo ("<pre>");
-               die(print_r($payload, true));
+            //   echo ("<pre>");
+             //  die(print_r($payload, true));
                 return true;
             }
             return false;
@@ -49,6 +49,16 @@
         {
             $_SESSION['access_token'] = $token;
             $this->client->setAccessToken($token);
+        }
+		
+		public function setUser($user)
+		{
+			$_SESSION['user'] = $user;
+		}
+		
+		public function getUser()
+        {
+            return isset($_SESSION['user']);
         }
         
         public function Logout()
