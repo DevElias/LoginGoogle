@@ -10,9 +10,9 @@
             
             if($this->client)
             {
-                $this->client->setClientID('195002437870-vr27esfdr89bvull4v78eifo0aktot41.apps.googleusercontent.com');
-                $this->client->setClientSecret('NIaltIvMzqHyFB1vVW5gDdcl');
-                $this->client->setRedirectUri('http://localhost/login/index.php');
+                $this->client->setClientID('Insert here ID Client');
+                $this->client->setClientSecret('Insert here ID Secret');
+                $this->client->setRedirectUri('Insert here URL Redirect');
                 $this->client->addScope('email');
                 $this->client->addScope('profile');
             }
@@ -38,8 +38,6 @@
                 
                 $payload = $this->getPayload();
                 
-            //   echo ("<pre>");
-             //  die(print_r($payload, true));
                 return true;
             }
             return false;
